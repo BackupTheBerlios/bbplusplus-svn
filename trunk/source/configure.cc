@@ -53,6 +53,7 @@ int Configure::run()
 	      break;
             case 4:
 	      ViewCurrentConfig();
+	      system(mCommandSet.GetSleepCommand());
 	      break;
             case 5:
 	      configMenu.showInfo("Info:", "Saving configuration...");
