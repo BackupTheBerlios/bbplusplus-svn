@@ -38,7 +38,7 @@ namespace ReadlineHelper {
   IN2: 0==first completion, otherwise some completion was already done.
   RET: completion string if found, NULL pointer otherwise. */
   char * giveMatch(const char *text, int state) {
-    static int list_index, len;
+    static unsigned int list_index, len;
     char *name, *name_new;
     std::string sname;
 
