@@ -1,5 +1,8 @@
 BashBurn 2 Changelog:
 
+060221:
+- Moved SVN repo to svn://svn.berlios.de/bbplusplus/trunk
+
 - Started SVN repository with apache server
 - Added some docs to distribution
 
