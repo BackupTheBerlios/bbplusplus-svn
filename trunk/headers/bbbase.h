@@ -5,8 +5,8 @@
 #include <string>
 
 
-// global version variable for bashburn2:
-static const std::string bbVersion = "::. BashBurn 2.0 alpha 1 .::";
+// global version variable for BashBurn++:
+static const std::string bbVersion = "::. BashBurn++ v1.0 pre alpha .::";
 
 /*
  * Abstact base class

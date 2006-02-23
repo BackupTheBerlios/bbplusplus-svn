@@ -8,7 +8,13 @@
 class AudioMenu : public Bbbase
 {
     public:
-        AudioMenu(TempDir & inTempDir, CdBurner & inCdBurner, CdReader & inCdReader);
+    /*
+     * The audio menu constructor.
+     * IN1: The temporary directory for files to burn
+     * IN2: Burner unit to use
+     * IN3: Reader unit to use
+     */
+     AudioMenu(TempDir & inTempDir, CdBurner & inCdBurner, CdReader & inCdReader);
         ~AudioMenu();
         void BurnCDFromFiles();
         void CopyCDToCD();
