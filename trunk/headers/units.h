@@ -12,7 +12,6 @@
   * It contains methods for setting/getting the path to it.
   * (No need for anything else regarding the reader)
   */
-
 class CdReader
 {
     public:
@@ -25,6 +24,10 @@ class CdReader
         std::string mPath;
 };
 
+/*
+ * The burner unit inherits from the reader and adds functionality
+ * to set the burner specific features.
+ */
 class CdBurner : public CdReader
 {
     public:
@@ -54,6 +57,10 @@ class CdBurner : public CdReader
         std::string mBlankingType;
 };
 
+/*
+ * The CD contains functions for setting/getting info
+ * about its contents.
+ */
 class CD
 {
 	public:
@@ -75,6 +82,10 @@ class CD
 		std::string mDescription;
 };
 
+/*
+ * Just as with the CD not a unit in the strictest sense of the world.
+ * Contains functions for setting temporary directory info
+ */
 class TempDir
 {
 	public:

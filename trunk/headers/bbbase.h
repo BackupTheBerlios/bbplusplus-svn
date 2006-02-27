@@ -12,15 +12,15 @@ static const std::string bbVersion = "::. BashBurn++ v1.0 pre alpha .::";
  * Abstact base class
  * The enums represent the different states of the program.
  * They are:
- * 1 - Main menu
- * 2 - Audio menu
- * 4 - Data menu
- * 8 - Image menu
- * 16 - Config menu
- * 32 - Burner menu
- * 64 - CD info menu
- * 128 - Temporary directory menu
- * 256 - Exit
+ * Main menu
+ * Audio menu
+ * Data menu
+ * Image menu
+ * Config menu
+ * Burner menu
+ * CD info menu
+ * Temporary directory menu
+ * Exit
  */
 class Bbbase
 {

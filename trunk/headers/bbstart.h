@@ -13,6 +13,13 @@
 #include "configure.h"
 #include <string>
 
+/*
+ * This is the part of the program that sets the current state.
+ * The run function returns a value that corresponds to a specific state
+ * which the current state pointer is set to, and its' run function is then
+ * called. This continues until exit is called.
+ */
+
 class Bbstart : public Bbbase
 {
     public:
