@@ -27,9 +27,8 @@ class Bbbase
     public:
         virtual ~Bbbase(){}
         virtual int run() = 0;
-        enum returnValues {mMenu = 1, Audio = 2, Data = 4,
-			   Images = 8, Config = 16, bMenu = 32,
-			   cdiMenu = 64, tdMenu = 128, Exit = 256};
+        enum returnValues { mMenu , Audio , Data , Images, Config,
+        	 bMenu, cdiMenu, tdMenu, Exit };
     protected:
 	Commands mCommandSet;
 	int mNumChoices;
