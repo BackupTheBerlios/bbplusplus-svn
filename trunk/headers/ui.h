@@ -59,7 +59,7 @@ class Menu
   	/* Method for getting a single menu choice (entry).
         IN1: number of menu choice (-1 == the currently last choice).
         RET: Returned name of the choice if there is one. */
-  	std::string & getChoice(int number);
+  	std::string & getChoice(unsigned int number);
 
   	/* Method for getting all menu choices (entrys).
         IN1: returned choices.
@@ -158,7 +158,7 @@ class Menu
         IN3: maximum length the input must have.
 	IN4: Where to store given input - if return is not false.
         RET: 0 == got no valid input; 1 == ok, got valid string in "input" */
-  	bool askForString(const std::string & message, int length_min, int length_max,
+  	bool askForString(const std::string & message, unsigned int length_min, unsigned int length_max,
 			  std::string & input);
 
         /* Prints "message" who requests the user to type in one choice.

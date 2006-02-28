@@ -80,12 +80,12 @@ void Configure::SetReader(const std::string & inPath)
 
 void const Configure::ViewCurrentConfig() const
 {
-	std::cout << "\n >> Current config << \n\n";
-	std::cout << "\n -- Reader settings -- \n";
+	std::cout << "\n >> Current config << \n";
+	std::cout << "\n [ -- Reader settings -- ] \n";
 	mReader.ViewCurrentConfig();
 	burnerMenu->ViewCurrentConfig();
 	cdInfo->ViewCurrentConfig();
-	tempDirMenu->ViewCurrentConfig();    
+	tempDirMenu->ViewCurrentConfig();
 }
 
 CdBurner & Configure::ReturnBurner()

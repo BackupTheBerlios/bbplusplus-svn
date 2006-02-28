@@ -24,7 +24,7 @@ const std::string & CdReader::GetPath() const
 
 void CdReader::ViewCurrentConfig() const
 {
-	std::cout << GetPath() << std::endl;
+	std::cout << "Path:\t\t\t" << (*this).GetPath() << std::endl;
 }
 
 
@@ -98,11 +98,11 @@ void CdBurner::ViewCurrentConfig() const
 {
 	CdReader::ViewCurrentConfig();
 	std::cout
-		<< GetSpeed() << std::endl
-		<< GetDriverOptions() << std::endl
-		<< GetOverBurn() << std::endl
-		<< GetDiskTrackAtOnce() << std::endl
-		<< GetBlankingType() << std::endl;
+		<< "Speed:\t\t\t" << GetSpeed() << std::endl
+		<< "Options:\t\t" << GetDriverOptions() << std::endl
+		<< "Overburn:\t\t" << GetOverBurn() << std::endl
+		<< "Burning mode:\t\t" << GetDiskTrackAtOnce() << std::endl
+		<< "Blanking mode:\t\t" << GetBlankingType() << std::endl;
 }
 
 
@@ -162,10 +162,10 @@ const std::string & CD::GetDescription() const
 void CD::ViewCurrentConfig() const
 {
 	std::cout
-		<< GetLabel() << std::endl
-		<< GetAuthor() << std::endl
-		<< GetDescription() << std::endl
-		<< GetCopyright() << std::endl;
+		<< "Label:\t\t\t" << GetLabel() << std::endl
+		<< "Author:\t\t\t" << GetAuthor() << std::endl
+		<< "Description:\t\t" << GetDescription() << std::endl
+		<< "Copyright:\t\t" << GetCopyright() << std::endl;
 }
 
 /*
@@ -202,6 +202,6 @@ const std::string & TempDir::GetDeleteTemp() const
 void TempDir::ViewCurrentConfig() const
 {
 	std::cout
-		<< GetPath() << std::endl
-		<< GetDeleteTemp() << std::endl;
+		<< "Path:\t\t\t" << GetPath() << std::endl
+		<< "Delete after burn:\t" << GetDeleteTemp() << std::endl;
 }

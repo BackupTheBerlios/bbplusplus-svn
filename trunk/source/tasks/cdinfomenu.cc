@@ -129,6 +129,6 @@ const std::string & CDInfo::GetCopyright() const
 
 void CDInfo::ViewCurrentConfig() const
 {
-	std::cout << "\n -- CD information settings -- \n";
+	std::cout << "\n [ -- CD information settings -- ] \n";
 	mCD->ViewCurrentConfig();
 }

@@ -5,8 +5,7 @@
 #include "../ui.h"
 
 /*
- * menus.h - Contains menu definitions for misc menus.
- * (Will probably be broken into smaller files at one point.
+ * mainmenu.h - Well...it's the main menu
  */
 class MainMenu : public Bbbase
 {
@@ -15,11 +14,10 @@ class MainMenu : public Bbbase
         ~MainMenu();
         int run();
     private:
-        //MenuBase mMenu;
-	Menu mMenu;
-        int choice;
-	int input;
-	std::vector<std::string> choices;
+		Menu mMenu;
+		int choice;
+		int input;
+		std::vector<std::string> choices;
 };
 
 #endif

@@ -23,14 +23,14 @@ int MainMenu::run()
 {
   while (true)
     {
-        int choice;
-	do {
-	  system(mCommandSet.GetClearCommand());
-	  mMenu.show();
-	} while (! mMenu.askForInteger("|> ", 0, mMenu.getNumberOfChoices(), choice));
-
-	switch (choice)
-	  {
+    	int choice;
+    	do {
+    		system(mCommandSet.GetClearCommand());
+    		mMenu.show();
+    	} while (! mMenu.askForInteger("|> ", 0, mMenu.getNumberOfChoices(), choice));
+    	
+    	switch (choice)
+    	{
             case 0:
                 return Audio;
                 break;
@@ -46,6 +46,6 @@ int MainMenu::run()
             case 4:
                 return Exit;
                 break;
-	  }
+	  	}	
     }
 }

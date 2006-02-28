@@ -99,7 +99,7 @@ bool Menu::setChoice(int number, const std::string & choice, const std::string &
 }
 
 
-std::string & Menu::getChoice(int number)
+std::string & Menu::getChoice(unsigned int number)
 {
   if ((number >= 0) && (number <= Choices.size())) {
     return Choices.at(0);
@@ -225,30 +225,29 @@ bool Menu::show()
 bool Menu::askForInteger(const std::string & message, int value_min, int value_max,
 			 int & input)
 {
-  std::cout << message;
-  std::cin >> input;
+	std::cout << message;
+	std::cin >> input;
 
-  if (std::cin.fail()) {  // wrong input format!
-    std::cin.clear();
-    std::cin.get();  // delete char in wrong format from input (to prevent a failure loop!!)
-    return 0;
-  }
-
-  if ((input >= value_min) && (input <= value_max))
-    return 1;
-  return 0;
+	if (std::cin.fail()) {  // wrong input format!
+		std::cin.clear();
+		std::cin.get();  // delete char in wrong format from input (to prevent a failure loop!!)
+		return false;
+	}
+  	if ((input >= value_min) && (input <= value_max))
+    	return true;
+  	return false;
 }
 
 
-bool Menu::askForString(const std::string & message, int length_min, int length_max,
+bool Menu::askForString(const std::string & message, unsigned int length_min, unsigned int length_max,
 			std::string & input)
 {
-  std::cout << message;
-  std::cin.width(length_max + 1);  // set max. input length
-  std::cin >> input;
-  if ((input.length() >= length_min) && (input.length() <= length_max))
-    return 1;
-  return 0;
+	std::cout << message;
+  	std::cin.width(length_max + 1);  // set max. input length
+  	std::cin >> input;
+  	if ((input.length() >= length_min) && (input.length() <= length_max))
+    	return true;
+  	return false;
 }
 
 

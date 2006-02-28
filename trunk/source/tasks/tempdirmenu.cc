@@ -85,6 +85,6 @@ const std::string & TempDirMenu::GetDeleteTemp() const
 
 void TempDirMenu::ViewCurrentConfig() const
 {
-	std::cout << "\n -- Temporary storage directory settings -- \n";
+	std::cout << "\n [ -- Temporary storage directory settings -- ] \n";
 	mTempDir->ViewCurrentConfig();
 }

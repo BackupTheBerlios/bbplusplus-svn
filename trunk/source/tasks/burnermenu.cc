@@ -181,6 +181,6 @@ const std::string & BurnerMenu::GetBlankingType() const
 
 void BurnerMenu::ViewCurrentConfig() const
 {
-	std::cout << "\n -- Burner settings -- \n";
+	std::cout << "\n [-- Burner settings --] \n";
 	mBurner->ViewCurrentConfig();
 }
