@@ -86,16 +86,16 @@ bool Menu::setChoice(int number, const std::string & choice, const std::string &
     Choices.insert(Choices.begin() + number, choice);
     Help.insert(Help.begin() + number, help);
     ++choice_count;
-    return 1;
+    return true;
   }
   else {  // store after current end-position
     Choices.push_back(choice);
     Help.push_back(help);
     ++choice_count;
-    return 1;
+    return true;
   }
 
-  return 0;
+  return false;
 }
 
 
@@ -122,10 +122,10 @@ bool Menu::deleteChoice(int number)
     Choices.erase(Choices.begin() + number);
     Help.erase(Help.begin() + number);
     --choice_count;
-    return 1;
+    return true;
   }
   
-  return 0;
+  return false;
 }
 
 
@@ -139,7 +139,7 @@ bool Menu::setTitle(const std::string & title)
 {
   Title = title;
 
-  return 1;
+  return true;
 }
 
 
@@ -151,7 +151,7 @@ const std::string & Menu::getTitle() const
 
 bool Menu::setLanguage(_Language language)
 {
-  return 0;  // Implementation not implemented yet!! TODO!
+  return false;  // Implementation not implemented yet!! TODO!
 }
 
 
@@ -159,7 +159,7 @@ bool Menu::showError(const std::string & title, const std::string & message)
 {
   std::cerr << "\033[1;31m" << "-- " << title << " --\n" << message << "\033[1;0m" << std::endl;
 
-  return 1;
+  return true;
 }
 
 
@@ -167,7 +167,7 @@ bool Menu::showInfo(const std::string & title, const std::string & message) cons
 {
   std::cout << "\033[1;32m" << "-- " << title << " --\n" << message << "\033[1;0m" << std::endl;
 
-  return 1;
+  return true;
 }
 
 
@@ -187,10 +187,9 @@ bool Menu::showTable(const std::string & title, std::vector<std::string> & table
       }
       num++;
     }
-    return 1;
+    return true;
   }
-
-  return 0;
+  return false;
 }
 
 
@@ -210,15 +209,14 @@ bool Menu::showHelp()
 
 bool Menu::show()
 {
-  //  system(mCommandSet.GetClearCommand());  // clear all
-  int num = 0;
-  std::cout << "\033[1;32m" << "[" << (*this).getTitle() << "\033[1;0m" << "]\n\n";
-  for (it = Choices.begin(); it != Choices.end(); ++it) {
-    std::cout << num << ": " << *it << std::endl;
-    num++;
-  }
-
-  return num;
+	//  system(mCommandSet.GetClearCommand());  // clear all
+	int num = 0;
+	std::cout << "\033[1;32m" << "[" << (*this).getTitle() << "\033[1;0m" << "]\n\n";
+	for (it = Choices.begin(); it != Choices.end(); ++it) {
+		std::cout << num << ": " << *it << std::endl;
+		num++;
+	}
+	return num;
 }
 
 
@@ -233,7 +231,7 @@ bool Menu::askForInteger(const std::string & message, int value_min, int value_m
 		std::cin.get();  // delete char in wrong format from input (to prevent a failure loop!!)
 		return false;
 	}
-  	if ((input >= value_min) && (input <= value_max))
+  	if ((input >= value_min) && (input < value_max))
     	return true;
   	return false;
 }
@@ -261,9 +259,9 @@ bool Menu::askForChoice(const std::string & message, const std::vector<std::stri
   if (_readUserInput(RL0, _input)) {
     //input = atoi(_input.c_str());
     input = _input;
-    return 1;
+    return true;
   }
-  return 0;
+  return false;
 }
 
 
@@ -282,7 +280,7 @@ bool Menu::_readUserInput(_InputMode mode, std::string & input)
       // "line" must be freed with "free()" because readline has allocated it with "malloc()":
       free(line);
     }
-    return 1;
+    return true;
   case RL1:  // File completion (readline standard behaviour)
     Readline::rl_attempted_completion_function = ReadlineHelper::doFileCompletion;
     while (line = Readline::readline("")) {
@@ -294,17 +292,16 @@ bool Menu::_readUserInput(_InputMode mode, std::string & input)
       // "line" must be freed with "free()" because readline has allocated it with "malloc()":
       free(line);
     }
-    return 1;
+    return true;
   default:  // == DEFAULT
     while(!(std::cin >> input)) {
       std::cin.clear(); // Reset input in case of bad input
       while(std::cin.get() != '\n')
 	continue;
     }
-    return 1;
+    return true;
   }
-
-  return 0;
+  return false;
 }
 
 
@@ -312,6 +309,5 @@ bool Menu::_setCompletionData(const std::vector<std::string> & choices)
 {
   ReadlineHelper::completion_data.clear();
   ReadlineHelper::completion_data = choices;
-
-  return 1;
+  return true;
 }
