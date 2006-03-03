@@ -26,7 +26,7 @@ class AudioMenu : public Bbbase
     private:
         Menu auMenu;
         int choice;
-        TempDir* mTempDir;
+        TempDir* mTempDir; 
         CdBurner* mCdBurner;
         CdReader* mCdReader;
 };

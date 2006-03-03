@@ -86,7 +86,7 @@ int Bbstart::run()
         }
         else if(mNextState == Exit)
         {
-	  	std::cout << "\nThank you for using BashBurn\n" << bbVersion
+	  	std::cout << "\nThank you for using " << bbVersion << std::endl
                  << "For info and updates, visit http://bashburn.sf.net\n";
 		return 0;
         }

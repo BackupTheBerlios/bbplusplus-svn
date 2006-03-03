@@ -5,6 +5,7 @@
  * Audio Menu methods
  */
 AudioMenu::AudioMenu(TempDir & inTempDir, CdBurner & inCdBurner, CdReader & inCdReader)
+	: mTempDir(NULL), mCdBurner(NULL), mCdReader(NULL)
 {
   mTempDir = &inTempDir;
   mCdBurner = &inCdBurner;

@@ -5,7 +5,7 @@
 /*
  * Burner menu methods
  */
-BurnerMenu::BurnerMenu(CdBurner & inBurner)
+BurnerMenu::BurnerMenu(CdBurner & inBurner) : mBurner(NULL)
 {
   mBurner = &inBurner;
   brnMenu.setTitle("Burner setup");

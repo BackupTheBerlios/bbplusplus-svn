@@ -5,6 +5,7 @@
  * Image Menu methods
  */
 ImageMenu::ImageMenu(TempDir & inTempDir, CdBurner & inCdBurner)
+	: mTempDir(NULL), mCdBurner(NULL)
 {
     mTempDir = &inTempDir; 	
     mCdBurner = &inCdBurner;

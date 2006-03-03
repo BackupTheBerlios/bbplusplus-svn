@@ -5,6 +5,7 @@
  * Data Menu methods
  */
 DataMenu::DataMenu(TempDir & inTempDir, CdBurner & inCdBurner)
+	: mTempDir(NULL), mCdBurner(NULL)
 {
     mTempDir = &inTempDir;
     mCdBurner = &inCdBurner;

@@ -4,7 +4,7 @@
 /*
  * Methods for setting/getting CD info
  */
-CDInfo::CDInfo(CD & inCD)
+CDInfo::CDInfo(CD & inCD) : mCD(NULL)
 {
     mCD = &inCD;
     cdInfoMenu.setTitle("CD Information");

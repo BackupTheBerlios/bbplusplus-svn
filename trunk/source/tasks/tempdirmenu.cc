@@ -2,7 +2,7 @@
 #include "../../headers/units.h"
 #include <iostream>
 
-TempDirMenu::TempDirMenu(TempDir & inTempDir)
+TempDirMenu::TempDirMenu(TempDir & inTempDir) : mTempDir(NULL)
 {
 	mTempDir = &inTempDir;
 	tempDirMenu.setTitle("Temporary storage directory information");
