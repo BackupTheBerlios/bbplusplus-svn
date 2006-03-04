@@ -29,7 +29,7 @@ int CDInfo::run()
 	do {
 	  system(mCommandSet.GetClearCommand());
 	  cdInfoMenu.show();
-	} while (! cdInfoMenu.askForInteger("|> ", 0, cdInfoMenu.getNumberOfChoices(), choice));
+	} while (! cdInfoMenu.askForInteger("|> ", 0, cdInfoMenu.getNumberOfChoices() - 1, choice));
 
         switch(choice)
         {
@@ -57,9 +57,7 @@ int CDInfo::run()
 
 void CDInfo::ReadLabel()
 {
-	std::cout << "\nEnter the label of your CD: ";
-	std::cin.get();
-	std::getline(std::cin, mInput);
+        cdInfoMenu.askForString("Enter the label of your CD: ", 0, 256, mInput);
 	SetLabel(mInput);
 }
 

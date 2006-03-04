@@ -35,7 +35,7 @@ int Configure::run()
 	do {
 	  system(mCommandSet.GetClearCommand());
 	  configMenu.show();
-	} while (! configMenu.askForInteger("|> ", 0, configMenu.getNumberOfChoices(), choice));
+	} while (! configMenu.askForInteger("|> ", 0, configMenu.getNumberOfChoices() - 1, choice));
 
 	switch(choice)
         {
@@ -67,9 +67,7 @@ int Configure::run()
 
 void Configure::ReadReader()
 {
-	std::cout << "Enter the path to your CD-reader: ";
-	std::cin.get();
-	std::getline(std::cin, mInput);
+        configMenu.askForString("Enter the path to your CD-reader: ", 0, 256, mInput);
 	SetReader(mInput);
 }
 

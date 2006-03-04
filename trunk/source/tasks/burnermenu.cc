@@ -32,7 +32,7 @@ int BurnerMenu::run()
 	do {
 	  system(mCommandSet.GetClearCommand());
 	  brnMenu.show();
-	} while (! brnMenu.askForInteger("|> ", 0, brnMenu.getNumberOfChoices(), choice));
+	} while (! brnMenu.askForInteger("|> ", 0, brnMenu.getNumberOfChoices() - 1, choice));
 
         switch(choice)
         {
@@ -67,9 +67,7 @@ int BurnerMenu::run()
 
 void BurnerMenu::ReadPath()
 {
-	std::cout << "\nEnter the path to your CD-burner: ";
-	std::cin.get();
-	std::getline(std::cin, mInput);
+        brnMenu.askForString("Enter the path to your CD-burner: ", 0, 256, mInput);
 	SetPath(mInput);	
 }
 

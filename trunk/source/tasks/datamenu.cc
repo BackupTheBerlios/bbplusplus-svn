@@ -30,7 +30,7 @@ int DataMenu::run()
 	do {
 	  system(mCommandSet.GetClearCommand());
 	  dMenu.show();
-	} while (! dMenu.askForInteger("|> ", 0, dMenu.getNumberOfChoices(), choice));
+	} while (! dMenu.askForInteger("|> ", 0, dMenu.getNumberOfChoices() - 1, choice));
 
         switch(choice)
         {

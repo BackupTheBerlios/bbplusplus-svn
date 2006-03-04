@@ -7,11 +7,11 @@
 MainMenu::MainMenu()
 {
     mMenu.setTitle("Main Menu");
-    mMenu.setChoice(0, "Audio", "doc_audio: make all audio");
-    mMenu.setChoice(1, "Data", "doc_data");
+    mMenu.setChoice(0, "Audio", "Make all audio CD's.");
+    mMenu.setChoice(1, "Data", "Make data CD's.");
     mMenu.setChoice(2, "CD Images", "doc_image");
-    mMenu.setChoice(3, "Configuration", "doc_conf");
-    mMenu.setChoice(4, "Exit", "doc_exit");
+    mMenu.setChoice(3, "Configuration", "Do settings of bashburn.");
+    mMenu.setChoice(4, "Exit", "Exit bashburn and return to the shell.");
 }
 
 MainMenu::~MainMenu()
@@ -27,7 +27,7 @@ int MainMenu::run()
     	do {
     		system(mCommandSet.GetClearCommand());
     		mMenu.show();
-    	} while (! mMenu.askForInteger("|> ", 0, mMenu.getNumberOfChoices(), choice));
+    	} while (! mMenu.askForInteger("|> ", 0, mMenu.getNumberOfChoices() - 1, choice));
     	
     	switch (choice)
     	{

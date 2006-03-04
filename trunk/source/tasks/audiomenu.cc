@@ -33,7 +33,7 @@ int AudioMenu::run()
 	do {
 	  system(mCommandSet.GetClearCommand());
 	  auMenu.show();
-	} while (! auMenu.askForInteger("|> ", 0, auMenu.getNumberOfChoices(), choice));
+	} while (! auMenu.askForInteger("|> ", 0, auMenu.getNumberOfChoices() - 1, choice));
 
         switch(choice)
         {
@@ -72,7 +72,7 @@ void AudioMenu::BurnCDFromFiles()
 
 void AudioMenu::CopyCDToCD()
 {
-	std::cout << "\nCopy CD to CD\n";
+        auMenu.showInfo("State:", "Copy CD to CD...");
 	system(mCommandSet.GetSleepCommand());
 }
 
@@ -90,12 +90,12 @@ void AudioMenu::CreateMp3s()
 
 void AudioMenu::CreateOggs()
 {
-	std::cout << "\nCreate Oggs\n";
+        auMenu.showInfo("State:", "Create Oggs...");
 	system(mCommandSet.GetSleepCommand());
 }
 
 void AudioMenu::CreateFlacs()
 {
-	std::cout << "\nCreate FLACSs\n";
+        auMenu.showInfo("State:", "Create FLACS...");
 	system(mCommandSet.GetSleepCommand());
 }

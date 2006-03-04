@@ -30,7 +30,7 @@ int ImageMenu::run()
 		do {
 		  system(mCommandSet.GetClearCommand());
 		  iMenu.show();
-		} while (! iMenu.askForInteger("|> ", 0, iMenu.getNumberOfChoices(), choice));
+		} while (! iMenu.askForInteger("|> ", 0, iMenu.getNumberOfChoices() - 1, choice));
 
 		switch (choice)
 		  {

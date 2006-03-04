@@ -9,7 +9,7 @@ TempDirMenu::TempDirMenu(TempDir & inTempDir) : mTempDir(NULL)
 	tempDirMenu.setChoice(0, "Path", "");
 	tempDirMenu.setChoice(1, "Delete after burn", "");
 	tempDirMenu.setChoice(2, "View settings", "");
-	tempDirMenu.setChoice(3, "Back", "");
+	tempDirMenu.setChoice(3, "Back", "Go back to previous menu.");
 }
 
 TempDirMenu::~TempDirMenu() 
@@ -25,7 +25,7 @@ int TempDirMenu::run()
 	     do {
 	       system(mCommandSet.GetClearCommand());
 	       tempDirMenu.show();
-	     } while (! tempDirMenu.askForInteger("|> ", 0, tempDirMenu.getNumberOfChoices(), choice));
+	     } while (! tempDirMenu.askForInteger("|> ", 0, tempDirMenu.getNumberOfChoices() - 1, choice));
 
 		switch(choice)
 		{
@@ -47,9 +47,7 @@ int TempDirMenu::run()
 
 void TempDirMenu::ReadPath()
 {
-	std::cout << "\nEnter path to temporary storage directory: ";
-	std::cin.get();
-	std::getline(std::cin, mInput);
+        tempDirMenu.askForString("Enter path to temporary storage directory: ", 0, 256, mInput);
 	SetPath(mInput);
 }
 
