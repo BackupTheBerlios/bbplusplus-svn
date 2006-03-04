@@ -1,63 +1,66 @@
 #include "../headers/ui.h"
 #include <iostream>
 
-namespace Readline {
-  extern "C" {
-#include <readline/readline.h>
-#include <readline/history.h>
-  }
+
+namespace Readline
+{
+extern "C" {
+  #include <readline/readline.h>
+  #include <readline/history.h>
+}
 }
 
 
-namespace ReadlineHelper {
-  // holds data for choice-completion:
-  std::vector<std::string> completion_data;
-  std::vector<std::string>::iterator it;
-  char * giveMatch(const char *, int);  // forward declaration
+namespace ReadlineHelper
+{
+// holds data for choice-completion:
+std::vector<std::string> completion_data;
+std::vector<std::string>::iterator it;
+char * giveMatch(const char *, int);  // forward declaration
 
-  char ** doChoiceCompletion(const char *text, int start, int end) {
-    char **matches;
-    matches = (char **)NULL;
+char ** doChoiceCompletion(const char *text, int start, int end) {
+  char **matches;
+  matches = (char **)NULL;
 
+  matches = Readline::rl_completion_matches(text, giveMatch);
+  return matches;
+}
+
+char ** doFileCompletion(const char *text, int start, int end) {
+  char **matches;
+  matches = (char **)NULL;
+
+  if (start == 0)
     matches = Readline::rl_completion_matches(text, giveMatch);
-    return matches;
+  return matches;
+}
+
+
+/* Helper function for readline.
+   IN1: text which should be tried to complete
+   IN2: 0==first completion, otherwise some completion was already done.
+   RET: completion string if found, NULL pointer otherwise. */
+char * giveMatch(const char *text, int state) {
+  static unsigned int list_index, length;
+  char *completion_text;
+  std::string tmp_text;  // <t>e<mp>orary <text> variable
+
+  if (!state) {
+    list_index = 0;
+    length = strlen(text);
   }
-
-  char ** doFileCompletion(const char *text, int start, int end) {
-    char **matches;
-    matches = (char **)NULL;
-
-    if (start == 0)
-      matches = Readline::rl_completion_matches(text, giveMatch);
-    return matches;
-  }
-
-
-  /* Helper function for readline.
-  IN1: text which should be tried to complete
-  IN2: 0==first completion, otherwise some completion was already done.
-  RET: completion string if found, NULL pointer otherwise. */
-  char * giveMatch(const char *text, int state) {
-    static unsigned int list_index, len;
-    char *name, *name_new;
-    std::string sname;
-
-    if (!state) {
-      list_index = 0;
-      len = strlen(text);
+  while (list_index < completion_data.size()) {  // return next name
+    tmp_text = completion_data[list_index++];
+    if (strncmp(tmp_text.c_str(), text, length) == 0) {
+      // completion_text must be allocated per "malloc()" because readline
+      // free's it (if it is finished with it):
+      completion_text = (char *)(malloc(strlen(tmp_text.c_str()) + 1));
+      strcpy(completion_text, tmp_text.c_str());
+      return completion_text;
     }
-    while (list_index < completion_data.size()) {  // return next name
-      sname = completion_data[list_index++];
-      if (strncmp(sname.c_str(), text, len) == 0) {
-	// name_new must be allocated per "malloc()" because readline free's it if it
-	// is finished with it:
-	name_new = (char *)(malloc(strlen(sname.c_str()) + 1));
-	strcpy(name_new, sname.c_str());
-	return name_new;
-      }
-    }
-    return (char *)NULL;
   }
+  return (char *)NULL;
+}
 }
 
 
@@ -70,7 +73,7 @@ Menu::Menu(const std::string & title)
   : Title(title), choice_count(0)
 {
   // Allow conditional parsing of the ~/.inputrc file.
-  Readline::rl_readline_name = "bash_burn_2";
+  Readline::rl_readline_name = "bbplusplus";
 }
 
 
@@ -211,7 +214,7 @@ bool Menu::show()
 {
 	//  system(mCommandSet.GetClearCommand());  // clear all
 	int num = 0;
-	std::cout << "\033[1;32m" << "[" << (*this).getTitle() << "\033[1;0m" << "]\n\n";
+	std::cout << "\033[1;32m" << "[" << (*this).getTitle() << "]" << "\033[1;0m" << "\n\n";
 	for (it = Choices.begin(); it != Choices.end(); ++it) {
 		std::cout << num << ": " << *it << std::endl;
 		num++;
@@ -225,14 +228,14 @@ bool Menu::askForInteger(const std::string & message, int value_min, int value_m
 {
 	std::cout << message;
 	std::cin >> input;
-
 	if (std::cin.fail()) {  // wrong input format!
 		std::cin.clear();
 		std::cin.get();  // delete char in wrong format from input (to prevent a failure loop!!)
 		return false;
 	}
-  	if ((input >= value_min) && (input < value_max))
-    	return true;
+  	if ((input >= value_min) && (input <= value_max))
+	        return true;
+
   	return false;
 }
 
@@ -241,10 +244,11 @@ bool Menu::askForString(const std::string & message, unsigned int length_min, un
 			std::string & input)
 {
 	std::cout << message;
-  	std::cin.width(length_max + 1);  // set max. input length
+  	std::cin.width(length_max);  // set maximal input length.
   	std::cin >> input;
   	if ((input.length() >= length_min) && (input.length() <= length_max))
-    	return true;
+	  return true;
+
   	return false;
 }
 
@@ -257,10 +261,10 @@ bool Menu::askForChoice(const std::string & message, const std::vector<std::stri
   std::cout << message;
   _setCompletionData(choices);
   if (_readUserInput(RL0, _input)) {
-    //input = atoi(_input.c_str());
     input = _input;
     return true;
   }
+
   return false;
 }
 
@@ -268,10 +272,11 @@ bool Menu::askForChoice(const std::string & message, const std::vector<std::stri
 bool Menu::_readUserInput(_InputMode mode, std::string & input)
 {
   char *line;
+
   switch (mode) {
   case RL0:  // Choice completion
     Readline::rl_attempted_completion_function = ReadlineHelper::doChoiceCompletion;
-    while (line = Readline::readline("")) {
+    while ((line = Readline::readline(""))) {
       if (!line) break;
       if (*line) {
 	Readline::add_history(line);
@@ -283,7 +288,7 @@ bool Menu::_readUserInput(_InputMode mode, std::string & input)
     return true;
   case RL1:  // File completion (readline standard behaviour)
     Readline::rl_attempted_completion_function = ReadlineHelper::doFileCompletion;
-    while (line = Readline::readline("")) {
+    while ((line = Readline::readline(""))) {
       if (!line) break;
       if (*line) {
 	Readline::add_history(line);
@@ -293,9 +298,9 @@ bool Menu::_readUserInput(_InputMode mode, std::string & input)
       free(line);
     }
     return true;
-  default:  // == DEFAULT
+  default:
     while(!(std::cin >> input)) {
-      std::cin.clear(); // Reset input in case of bad input
+      std::cin.clear();  // Reset input in case of bad input.
       while(std::cin.get() != '\n')
 	continue;
     }
