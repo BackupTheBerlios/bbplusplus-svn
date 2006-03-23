@@ -51,7 +51,7 @@ void Commands::SetSleepCommand(char* inCommand)
 	std::strcpy(mSleepCommand, inCommand);
 }
 
-char* Commands::GetSleepCommand()
+const char* Commands::GetSleepCommand() const
 {
 	return mSleepCommand;
 }
@@ -67,7 +67,7 @@ void Commands::SetClearCommand(char* inCommand)
 	std::strcpy(mClearCommand, inCommand);
 }
 
-char* Commands::GetClearCommand()
+const char* Commands::GetClearCommand() const
 {
 	return mClearCommand;
 }
@@ -83,7 +83,7 @@ void Commands::SetBurnCommand(char* inCommand)
 	std::strcpy(mBurnCommand, inCommand);
 }
 
-char* Commands::GetBurnCommand()
+const char* Commands::GetBurnCommand() const
 {
 	return mBurnCommand;
 }
@@ -99,7 +99,7 @@ void Commands::SetReadCDCommand(char* inCommand)
 	std::strcpy(mReadCDCommand, inCommand);
 }
 
-char* Commands::GetReadCDCommand()
+const char* Commands::GetReadCDCommand() const
 {
 	return mReadCDCommand;
 }
@@ -115,7 +115,7 @@ void Commands::SetCreateImageCommand(char* inCommand)
 	std::strcpy(mCreateImageCommand, inCommand);
 }
 
-char* Commands::GetCreateImageCommand()
+const char* Commands::GetCreateImageCommand() const
 {
 	return mCreateImageCommand;
 }
@@ -131,7 +131,7 @@ void Commands::SetCDToAudioCommand(char* inCommand)
 	std::strcpy(mCDToAudioCommand, inCommand);
 }
 
-char* Commands::GetCDToAudioCommand()
+const char* Commands::GetCDToAudioCommand() const
 {
 	return mCDToAudioCommand;
 }
@@ -147,7 +147,7 @@ void Commands::SetMp3EncCommand(char* inCommand)
 	std::strcpy(mMp3EncCommand, inCommand);
 }
 
-char* Commands::GetMp3EncCommand()
+const char* Commands::GetMp3EncCommand() const
 {
 	return mMp3EncCommand;
 }
@@ -163,7 +163,7 @@ void Commands::SetOggEncCommand(char* inCommand)
 	std::strcpy(mOggEncCommand, inCommand);
 }
 
-char* Commands::GetOggEncCommand()
+const char* Commands::GetOggEncCommand() const
 {
 	return mOggEncCommand;
 }

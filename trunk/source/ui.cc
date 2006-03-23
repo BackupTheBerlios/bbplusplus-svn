@@ -1,5 +1,6 @@
 #include "../headers/ui.h"
 #include <iostream>
+using namespace std;
 
 
 namespace Readline
@@ -79,7 +80,7 @@ Menu::Menu(const std::string & title)
 
 Menu::~Menu() 
 {
-  std::cout << "\nDeleting UI...";
+  cout << "\nDeleting UI...\n";
 }
 
 
@@ -160,7 +161,7 @@ bool Menu::setLanguage(_Language language)
 
 bool Menu::showError(const std::string & title, const std::string & message)
 {
-  std::cerr << "\033[1;31m" << "-- " << title << " --\n" << message << "\033[1;0m" << std::endl;
+  std::cerr << "\033[1;31m" << "-- " << title << " --\n" << message << "\033[1;0m" << endl;
 
   return true;
 }
@@ -168,7 +169,7 @@ bool Menu::showError(const std::string & title, const std::string & message)
 
 bool Menu::showInfo(const std::string & title, const std::string & message) const
 {
-  std::cout << "\033[1;32m" << "-- " << title << " --\n" << message << "\033[1;0m" << std::endl;
+  cout << "\033[1;32m" << "-- " << title << " --\n" << message << "\033[1;0m" << endl;
 
   return true;
 }
@@ -177,16 +178,16 @@ bool Menu::showInfo(const std::string & title, const std::string & message) cons
 bool Menu::showTable(const std::string & title, std::vector<std::string> & table,
 		     int columns, bool has_head)
 {
-  std::cout << "\033[1;32m" << title << "\033[1;0m" << "\n\n";
+  cout << "\033[1;32m" << title << "\033[1;0m" << "\n\n";
 
   if (! (table.size() % columns)) {  // table is defined correctly
     int num = 1;
     for (it = table.begin(); it != table.end(); ++it) {
-      std::cout << *it;
+      cout << *it;
       if (! (num % columns)) { // new row (maximal number of columns reached)
-	std::cout << "\n";
+	cout << "\n";
 	if ((num == columns) && (has_head))  // table has a head (seperate it with a "\n")
-	  std::cout << "\n";
+	  cout << "\n";
       }
       num++;
     }
@@ -199,10 +200,10 @@ bool Menu::showTable(const std::string & title, std::vector<std::string> & table
 bool Menu::showHelp()
 {
   int num = 0;
-  std::cout << "\033[1;36m" << getTitle() << "\n\nHELP CHOICES:" << "\033[1;0m" << std::endl;
+  cout << "\033[1;36m" << getTitle() << "\n\nHELP CHOICES:" << "\033[1;0m" << endl;
 
   for (it = Help.begin(); it != Help.end(); it++) {
-    std::cout << num << ": " << *it << std::endl;
+    cout << num << ": " << *it << endl;
     num++;
   }
 
@@ -212,11 +213,11 @@ bool Menu::showHelp()
 
 bool Menu::show()
 {
-	//  system(mCommandSet.GetClearCommand());  // clear all
+	//system(mCommandSet.GetClearCommand());  // clear all
 	int num = 0;
-	std::cout << "\033[1;32m" << "[" << (*this).getTitle() << "]" << "\033[1;0m" << "\n\n";
+	cout << "\033[1;32m" << "[" << (*this).getTitle() << "]" << "\033[1;0m" << "\n\n";
 	for (it = Choices.begin(); it != Choices.end(); ++it) {
-		std::cout << num << ": " << *it << std::endl;
+		cout << num << ": " << *it << endl;
 		num++;
 	}
 	return num;
@@ -226,11 +227,11 @@ bool Menu::show()
 bool Menu::askForInteger(const std::string & message, int value_min, int value_max,
 			 int & input)
 {
-	std::cout << message;
-	std::cin >> input;
-	if (std::cin.fail()) {  // wrong input format!
-		std::cin.clear();
-		std::cin.get();  // delete char in wrong format from input (to prevent a failure loop!!)
+	cout << message;
+	cin >> input;
+	if (cin.fail()) {  // wrong input format!
+		cin.clear();
+		cin.get();  // delete char in wrong format from input (to prevent a failure loop!!)
 		return false;
 	}
   	if ((input >= value_min) && (input <= value_max))
@@ -239,16 +240,14 @@ bool Menu::askForInteger(const std::string & message, int value_min, int value_m
   	return false;
 }
 
-
 bool Menu::askForString(const std::string & message, unsigned int length_min, unsigned int length_max,
 			std::string & input)
 {
-	std::cout << message;
-  	std::cin.width(length_max);  // set maximal input length.
-  	std::cin >> input;
+	cout << message;
+  	cin.width(length_max);  // set maximal input length.
+  	cin >> input;
   	if ((input.length() >= length_min) && (input.length() <= length_max))
 	  return true;
-
   	return false;
 }
 
@@ -258,7 +257,7 @@ bool Menu::askForChoice(const std::string & message, const std::vector<std::stri
 {
   std::string _input;
 
-  std::cout << message;
+  cout << message;
   _setCompletionData(choices);
   if (_readUserInput(RL0, _input)) {
     input = _input;
@@ -299,9 +298,9 @@ bool Menu::_readUserInput(_InputMode mode, std::string & input)
     }
     return true;
   default:
-    while(!(std::cin >> input)) {
-      std::cin.clear();  // Reset input in case of bad input.
-      while(std::cin.get() != '\n')
+    while(!(cin >> input)) {
+      cin.clear();  // Reset input in case of bad input.
+      while(cin.get() != '\n')
 	continue;
     }
     return true;

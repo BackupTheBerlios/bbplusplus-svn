@@ -14,27 +14,27 @@
 		 * General system commands not related to burning or copying
 		 */
 		void SetSleepCommand(char* inCommand);
-		char* GetSleepCommand();
+		const char* GetSleepCommand() const;
 		void SetClearCommand(char* inCommand);
-		char* GetClearCommand();
+		const char* GetClearCommand() const;
 		/*
 		 * Burning and image creation commands
 		 */		
 		void SetBurnCommand(char* inCommand);
-		char* GetBurnCommand();
+		const char* GetBurnCommand()const;
 		void SetReadCDCommand(char* inCommand);
-		char* GetReadCDCommand();
+		const char* GetReadCDCommand()const;
 		void SetCreateImageCommand(char* inCommand);
-		char* GetCreateImageCommand();
+		const char* GetCreateImageCommand()const;
 		/*
 		 * Commands related to audio CDs
 		 */
 		 void SetCDToAudioCommand(char* inCommand);
-		 char* GetCDToAudioCommand();
+		 const char* GetCDToAudioCommand()const;
 		 void SetMp3EncCommand(char* inCommand);
-		 char* GetMp3EncCommand();
+		 const char* GetMp3EncCommand()const;
 		 void SetOggEncCommand(char* inCommand);
-		 char* GetOggEncCommand();
+		 const char* GetOggEncCommand()const;
 	private:
 		char* mSleepCommand;
 		char* mClearCommand;
@@ -45,8 +45,10 @@
 		
 		char* mCDToAudioCommand;
 		char* mMp3EncCommand;
-		char* mOggEncCommand;	
+		char* mOggEncCommand;
+		
+		char* operator+(char*);
+
  };
 
 #endif /*COMMANDS_H_*/
-

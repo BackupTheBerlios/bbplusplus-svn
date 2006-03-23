@@ -47,7 +47,7 @@ int TempDirMenu::run()
 
 void TempDirMenu::ReadPath()
 {
-        tempDirMenu.askForString("Enter path to temporary storage directory: ", 0, 256, mInput);
+	tempDirMenu.askForString("Enter path to temporary storage directory: ", 0, 256, mInput);
 	SetPath(mInput);
 }
 

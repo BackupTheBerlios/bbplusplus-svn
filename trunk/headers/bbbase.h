@@ -30,8 +30,8 @@ class Bbbase
         enum returnValues { mMenu , Audio , Data , Images, Config,
         	 bMenu, cdiMenu, tdMenu, Exit };
     protected:
-	Commands mCommandSet;
-	int mNumChoices;
+		Commands mCommandSet;
+		int mNumChoices;
 };
 
 #endif

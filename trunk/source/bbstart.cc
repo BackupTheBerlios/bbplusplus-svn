@@ -11,7 +11,7 @@ Bbstart::Bbstart()
     mMainMenu = new MainMenu();
     mConfiguration = new Configure();
     /*
-     * The following menus needs an object to work on.
+     * The following menus needs objects to work on.
      * Because of this, we use some help functions from
      * the configure class to pass these objects to their
      * respective menu.
@@ -46,8 +46,8 @@ int Bbstart::run()
  * For now, we're happy with just starting the main menu.
  * (Because we all know that what is good enough for Anders is good enough for you!)
  */
-    mCurrentState = mMainMenu;
-
+	mCurrentState = mMainMenu;
+	
     while(true)
     {
         mNextState = mCurrentState->run();

@@ -65,8 +65,20 @@ int AudioMenu::run()
 
 void AudioMenu::BurnCDFromFiles()
 {
-	std::cout << "\nGoing to burn CD from files in " << mTempDir->GetPath() << " with " 
-		<< mCdBurner->GetPath() << " using " << mCommandSet.GetBurnCommand() << std::endl;
+	// Backup old command
+	std::string oldBurnCmd = mCommandSet.GetBurnCommand();
+	// Set the new one
+	std::string newBurnCmd = oldBurnCmd + ' ' + mCdBurner->GetPath() + ' ' + mTempDir->GetPath();
+	
+	mCommandSet.SetBurnCommand(&newBurnCmd[0]);	
+	
+	std::cout << "New burn command is: " << mCommandSet.GetBurnCommand() << std::endl;
+	system(mCommandSet.GetSleepCommand());
+	
+	std::cout << "Resetting burn command" << std::endl;
+	mCommandSet.SetBurnCommand(&oldBurnCmd[0]);
+	
+	std::cout << "Burn command is once again: " << mCommandSet.GetBurnCommand();
 	system(mCommandSet.GetSleepCommand());
 }
 
