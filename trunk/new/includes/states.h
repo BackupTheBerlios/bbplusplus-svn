@@ -7,7 +7,6 @@
  * which consist of the actual actions such as burning a CD or create an ISO-file.
  */
 
-
 #include "menu.h"
 
 // Main states

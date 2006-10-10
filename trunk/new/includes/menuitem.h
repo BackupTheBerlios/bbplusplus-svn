@@ -2,13 +2,13 @@
 #define MENUITEM_H_
 
 #include <string>
-//#include "states.h"
 
 class MenuItem{
 	public:
 		/*
 		 * This constructor is not really supposed to be used. It's needed however for
 		 * the map of menu entries in the menu class.
+		 * (And yes, I realize this is a lack of knowledge on my part, I'll fix it once I grow a brain)
 		 */
 		MenuItem();
 

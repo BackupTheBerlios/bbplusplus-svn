@@ -1,0 +1,3 @@
+BashBurn++ -- C++ port of BashBurn
+
+To compile, make sure the compiler has the BashBurn includes added to the list of includes to use.
