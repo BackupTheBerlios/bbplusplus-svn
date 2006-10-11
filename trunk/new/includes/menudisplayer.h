@@ -5,6 +5,7 @@
 
 class MenuDisplayer {
 	public:
+		MenuDisplayer() : menu(NULL) {}
 		MenuDisplayer(Menu & m);
 		~MenuDisplayer();
 		void setDisplayee(Menu & m);
@@ -12,7 +13,5 @@ class MenuDisplayer {
 	private:
 		Menu* menu;
 };
-	
-
 
 #endif /*MENUDISPLAYER_H_*/

@@ -8,6 +8,8 @@
  */
 
 #include "menu.h"
+#include "menudisplayer.h"
+#include "inputhandler.h"
 
 // Main states
 enum states { MAIN,
@@ -31,8 +33,11 @@ class States {
 	public:
 		States();
 		~States();
-		Menu* getMenu(int);
-		void initMenus();
+		Menu* getState(int);
+		void setState(int);
+		void initStates();
+		void show() const;
+		int getInput() const;
 	protected:
 		void initMain();
 		void initData();
@@ -48,6 +53,8 @@ class States {
 		Menu* cdCopyMenu;
 		Menu* imageMenu;
 		Menu* configMenu;
+		MenuDisplayer* displayer;
+		InputHandler* handler;
 };
 
 #endif /*STATES_H_*/

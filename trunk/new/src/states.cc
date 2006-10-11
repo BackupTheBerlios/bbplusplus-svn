@@ -1,13 +1,15 @@
 #include "states.h"
 
 States::States() {
-	initMenus();
+	initStates();
 	menuContainer[MAIN] = mainMenu;
 	menuContainer[DATA] = dataMenu;
 	menuContainer[AUDIO] = audioMenu;
 	menuContainer[CDCOPY] = cdCopyMenu;
 	menuContainer[IMAGES] = imageMenu;
 	menuContainer[CONFIG] = configMenu;
+	displayer = new MenuDisplayer(*(getState(MAIN)));
+	handler = new InputHandler(*(getState(MAIN)));
 }
 
 States::~States() {
@@ -17,13 +19,28 @@ States::~States() {
 	delete cdCopyMenu;
 	delete imageMenu;
 	delete configMenu;
+	delete displayer;
+	delete handler;
 }
 
-Menu* States::getMenu(int i) {
+void States::show() const {
+	displayer->show();
+}
+
+int States::getInput() const {
+	return handler->getInput();
+}
+
+Menu* States::getState(int i) {
 	return menuContainer[i];
 }
 
-void States::initMenus() {
+void States::setState(int i) {
+	displayer->setDisplayee(*(getState(i)));
+	handler->setNewHandled(*(getState(i)));
+}
+
+void States::initStates() {
 	initMain();
 	initData();
 	initAudio();
