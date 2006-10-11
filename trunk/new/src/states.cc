@@ -35,9 +35,16 @@ Menu* States::getState(int i) {
 	return menuContainer[i];
 }
 
+/*
+ * setState checks whether the entered state is a menu or an action.
+ * Is it a menu, setState sets the menu displayer and input handler to the
+ * correct menu.
+ */
 void States::setState(int i) {
-	displayer->setDisplayee(*(getState(i)));
-	handler->setNewHandled(*(getState(i)));
+	if(menuContainer.find(i) != menuContainer.end()) {
+		displayer->setDisplayee(*(getState(i)));
+		handler->setNewHandled(*(getState(i)));
+	}
 }
 
 void States::initStates() {

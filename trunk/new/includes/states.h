@@ -11,7 +11,7 @@
 #include "menudisplayer.h"
 #include "inputhandler.h"
 
-// Main states
+// Main states (Or menus, except for exit)
 enum states { MAIN,
 						DATA,
 						AUDIO,
@@ -20,7 +20,7 @@ enum states { MAIN,
 						CONFIG,
 						EXIT
 };
-// Sub states
+// Sub states (Actual actions taking place)
 enum activities { DATABURNING = 100,
 							AUDIOBURNING,
 							CD2ISO,
