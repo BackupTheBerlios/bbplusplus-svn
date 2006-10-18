@@ -42,6 +42,24 @@ int main()
 			case MAIN:
 				states.setState(MAIN);
 				break;
+			case DATABURNING:
+				states.setState(DATABURNING);
+				break;
+			case AUDIOBURNING:
+				states.setState(AUDIOBURNING);
+				break;
+			case CD2ISO:
+				states.setState(CD2ISO);
+				break;
+			case CD2CD:
+				states.setState(CD2CD);
+				break;
+			case IMAGEBURNING:
+				states.setState(IMAGEBURNING);
+				break;
+			case DVDBURNING:
+				states.setState(DVDBURNING);
+				break;
 			case EXIT:
 				return 0;
 		}

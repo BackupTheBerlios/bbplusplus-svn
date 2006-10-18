@@ -4,6 +4,7 @@
 class Commands {
 	public:
 		Commands();
+		static Commands & instance();
 		~Commands();
 		void setCdBurnCommand(const char* command);
 		void setDvdBurnCommand(const char* command);

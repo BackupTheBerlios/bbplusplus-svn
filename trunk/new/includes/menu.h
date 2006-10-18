@@ -17,6 +17,7 @@ class Menu {
 		int getMenuSize() const;
 		const char* getMenuTitle();
 		Menu & operator=(Menu & m);
+		int run();
 	private:
 		char* menuTitle;
 		EntryContainer menuItems;

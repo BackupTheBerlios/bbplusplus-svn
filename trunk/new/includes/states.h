@@ -8,6 +8,7 @@
  */
 
 #include "menu.h"
+#include "action.h"
 #include "menudisplayer.h"
 #include "inputhandler.h"
 
@@ -36,16 +37,30 @@ class States {
 		Menu* getState(int);
 		void setState(int);
 		void initStates();
+		void initActions();
+		Action* getAction(int);
 		void show() const;
 		int getInput() const;
 	protected:
+	/*
+	 * Help methods used to initialize individual states/actions
+	 */
 		void initMain();
 		void initData();
 		void initAudio();
 		void initCdCopy();
 		void initImage();
 		void initConfig();
+		void initDataBurning();
+		void initAudioBurning();
+		void initCd2Iso();
+		void initCd2Cd();
+		void initImageBurning();
+		void initDvdBurning();
 	private:
+		/*
+		 * The menu container and menus used
+		 */
 		std::map<int, Menu*> menuContainer;
 		Menu* mainMenu;
 		Menu* dataMenu;
@@ -53,6 +68,16 @@ class States {
 		Menu* cdCopyMenu;
 		Menu* imageMenu;
 		Menu* configMenu;
+		/*
+		 * The action container and the actions that perform tasks.
+		 */
+		std::map<int, Action*> actionContainer;
+		Action* dataBurning;
+		Action* audioBurning;
+		Action* cd2iso;
+		Action* cd2cd;
+		Action* imageBurning;
+		Action* dvdBurning;
 		MenuDisplayer* displayer;
 		InputHandler* handler;
 };

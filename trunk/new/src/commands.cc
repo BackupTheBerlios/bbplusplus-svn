@@ -2,6 +2,7 @@
 #include <cstdlib>
 #include <cstring>
 
+
 Commands::Commands() : firstTime(true) {
 	initCommands();
 }
