@@ -11,6 +11,7 @@
 #include "action.h"
 #include "menudisplayer.h"
 #include "inputhandler.h"
+#include "commands.h"
 
 // Main states (Or menus, except for exit)
 enum states { MAIN,
@@ -32,7 +33,7 @@ enum activities { DATABURNING = 100,
 
 class States {
 	public:
-		States();
+		States(Commands &);
 		~States();
 		Menu* getState(int);
 		void setState(int);
@@ -58,6 +59,10 @@ class States {
 		void initImageBurning();
 		void initDvdBurning();
 	private:
+		/*
+		 * System commands used
+		 */
+		Commands* commands;
 		/*
 		 * The menu container and menus used
 		 */

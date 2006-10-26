@@ -6,7 +6,8 @@
  * adds them to their respective container. Also the menu displayer and 
  * input handler are set to handle the main menu.
  */
-States::States() {
+States::States(Commands & c) {
+	commands = &c;
 	initStates();
 	menuContainer[MAIN] = mainMenu;
 	menuContainer[DATA] = dataMenu;
