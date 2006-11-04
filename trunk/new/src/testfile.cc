@@ -1,9 +1,9 @@
-#include "menuitem.h"
-#include "menu.h"
-#include "menudisplayer.h"
-#include "states.h"
-#include "inputhandler.h"
-#include "commands.h"
+#include "../includes/menuitem.h"
+#include "../includes/menu.h"
+#include "../includes/menudisplayer.h"
+#include "../includes/states.h"
+#include "../includes/inputhandler.h"
+#include "../includes/commands.h"
 #include <iostream>
 using namespace std;
 

@@ -1,4 +1,4 @@
-#include "inputhandler.h"
+#include "../includes/inputhandler.h"
 #include <iostream>
 #include <cstdlib>
 

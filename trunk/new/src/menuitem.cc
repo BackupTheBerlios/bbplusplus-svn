@@ -1,5 +1,5 @@
-#include "menuitem.h"
-#include "states.h"
+#include "../includes/menuitem.h"
+#include "../includes/states.h"
 
 MenuItem::MenuItem() : state(MAIN) {
 	entryText = new char[strlen("Empty string") + 1];
