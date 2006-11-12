@@ -6,10 +6,10 @@
 class InputHandler {
 	public:
 		InputHandler() : menu(NULL) { }
-		InputHandler(Menu & m);
+		InputHandler(Menu* m);
 		~InputHandler();
 		int getInput();
-		void setNewHandled(Menu & m);
+		void setNewHandled(Menu* m);
 	private:
 		Menu* menu;
 		int input;

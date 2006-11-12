@@ -3,7 +3,7 @@
 #include <cstdlib>
 
 	
-InputHandler::InputHandler(Menu & m) {
+InputHandler::InputHandler(Menu* m) {
 	menu = new Menu(m);
 }
 
@@ -29,7 +29,7 @@ int InputHandler::getInput() {
 /*
  * Must delete previously handled menu
  */
-void InputHandler::setNewHandled(Menu & m) {
+void InputHandler::setNewHandled(Menu* m) {
 	delete menu;
 	menu = new Menu(m);
 }

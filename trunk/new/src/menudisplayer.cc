@@ -4,7 +4,7 @@
 using std::cout;
 using std::endl;
 
-MenuDisplayer::MenuDisplayer(Menu & m) {
+MenuDisplayer::MenuDisplayer(Menu* m) {
 	menu = new Menu(m);
 }
 
@@ -29,7 +29,7 @@ void MenuDisplayer::show() const {
 /*
  * Make sure to delete previous displayee
  */
-void MenuDisplayer::setDisplayee(Menu & m) {
+void MenuDisplayer::setDisplayee(Menu* m) {
 	delete menu;
 	menu = new Menu(m);
 }

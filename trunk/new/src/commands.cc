@@ -2,6 +2,16 @@
 #include <cstdlib>
 #include <cstring>
 
+/*
+ * The commands used should be a singleton
+ */
+Commands* Commands::commandInstance = 0;
+Commands* Commands::Instance() {
+	if(commandInstance == 0) {
+		commandInstance = new Commands;
+	}
+	return commandInstance;
+}
 
 Commands::Commands() : firstTime(true) {
 	initCommands();

@@ -6,9 +6,9 @@
 class MenuDisplayer {
 	public:
 		MenuDisplayer() : menu(NULL) {}
-		MenuDisplayer(Menu & m);
+		MenuDisplayer(Menu* m);
 		~MenuDisplayer();
-		void setDisplayee(Menu & m);
+		void setDisplayee(Menu* m);
 		void show() const;
 	private:
 		Menu* menu;

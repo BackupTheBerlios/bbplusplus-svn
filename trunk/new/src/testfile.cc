@@ -9,19 +9,20 @@ using namespace std;
 
 int main()
 {	
-
-	// System commands used by BashBurn++
-	Commands executer;
+	/*
+	 *  System commands used by BashBurn++
+	 * We use a smart pointer to not have to worry about deleting it later on.
+	 */
+	auto_ptr<Commands> executer = (auto_ptr<Commands>)Commands::Instance();
 	
 	MenuDisplayer displayer;
 	InputHandler handler;
 
 	/*
-	 * Here we create not only the different states, but also the displayer used to print the menus
-	 * and the input handler used to get input from the user. All we have to do in the switch statement
-	 * below is to set the new handled state.
+	 * Here we create the different states of the program, and pass along
+	 * the commands used, the menu displayer and the input handler.
 	 */
-	States states(executer, displayer, handler);
+	States states(*executer, displayer, handler);
 	
 	// Let it rip!
 	int nextState;
@@ -31,7 +32,7 @@ int main()
 	 * (Which could be a menu or an action) and continue.
 	 */
 	while(true) {
-		executer.clearScreen();
+		executer->clearScreen();
 		states.show();
 		nextState = states.getInput();
 		if(nextState == EXIT) {

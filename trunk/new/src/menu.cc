@@ -9,24 +9,24 @@ Menu::Menu(const char* t) : menuSize(0) {
 }
 
 // Copy constructor
-Menu::Menu(Menu & m) : menuSize(0) {
-	menuTitle = new char[strlen(m.menuTitle) + 1 ];
-	strcpy(menuTitle, m.menuTitle);
-	menuItems = m.getEntries();
-	menuSize = m.getMenuSize();
+Menu::Menu(Menu* m) : menuSize(0) {
+	menuTitle = new char[strlen(m->menuTitle) + 1 ];
+	strcpy(menuTitle, m->menuTitle);
+	menuItems = m->getEntries();
+	menuSize = m->getMenuSize();
 }	
 
 // Assignment operator
-Menu & Menu::operator=(Menu & m) {
-	if(this == &m) {
-		return *this;
+Menu* Menu::operator=(Menu* m) {
+	if(this == m) {
+		return this;
 	}
 	delete[] menuTitle;
-	menuTitle = new char[strlen(m.menuTitle) + 1 ];
-	strcpy(menuTitle, m.menuTitle);
-	menuItems = m.getEntries();
-	menuSize = m.getMenuSize();
-	return *this;
+	menuTitle = new char[strlen(m->menuTitle) + 1 ];
+	strcpy(menuTitle, m->menuTitle);
+	menuItems = m->getEntries();
+	menuSize = m->getMenuSize();
+	return this;
 }
 
 Menu::~Menu() {

@@ -1,10 +1,12 @@
 #ifndef COMMANDS_H_
 #define COMMANDS_H_
 
+#include <memory>
+
 class Commands {
 	public:
-		Commands();
 		~Commands();
+		static Commands* Instance();
 		void setCdBurnCommand(const char* command);
 		void setDvdBurnCommand(const char* command);
 		void setClearCommand(const char* command);
@@ -13,6 +15,7 @@ class Commands {
 	 * Helper methods not supposed to be used outside the class
 	 */
 	protected:
+		Commands();
 		void initCommands();
 		const char* getCdBurnCommand();
 		const char* getDvdBurnCommand();
@@ -22,6 +25,7 @@ class Commands {
 		char* cdBurnCommand;
 		char* dvdBurnCommand;
 		char* clearCommand;
+		static Commands* commandInstance;
 };
 
 #endif /*COMMANDS_H_*/

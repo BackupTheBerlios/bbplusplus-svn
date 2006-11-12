@@ -22,8 +22,8 @@ States::States(Commands & c, MenuDisplayer & m, InputHandler & i) : commands(&c)
 	actionContainer[IMAGEBURNING] = imageBurning;
 	actionContainer[DVDBURNING] = dvdBurning;
 	
-	displayer->setDisplayee(*(getState(MAIN)));
-	handler->setNewHandled(*(getState(MAIN)));
+	displayer->setDisplayee(getState(MAIN));
+	handler->setNewHandled(getState(MAIN));
 }
 
 States::~States() {
@@ -60,8 +60,8 @@ Menu* States::getState(int i) {
  */
 void States::setState(int i) {
 	if(menuContainer.find(i) != menuContainer.end()) {
-		displayer->setDisplayee(*(getState(i)));
-		handler->setNewHandled(*(getState(i)));
+		displayer->setDisplayee(getState(i));
+		handler->setNewHandled(getState(i));
 	} else if(actionContainer.find(i) != actionContainer.end()) {
 		// DEBUG!
 		std::cout << (getAction(i))->run();
