@@ -33,7 +33,7 @@ enum activities { DATABURNING = 100,
 
 class States {
 	public:
-		States(Commands &);
+		States(Commands &, MenuDisplayer &, InputHandler &);
 		~States();
 		Menu* getState(int);
 		void setState(int);
@@ -83,6 +83,11 @@ class States {
 		Action* cd2cd;
 		Action* imageBurning;
 		Action* dvdBurning;
+		/*
+		 * Menu displayer and input handler used by the program.
+		 * They are both created by the main file and passed as arguments to
+		 * the states constructor.
+		 */
 		MenuDisplayer* displayer;
 		InputHandler* handler;
 };

@@ -6,8 +6,7 @@
  * adds them to their respective container. Also the menu displayer and 
  * input handler are set to handle the main menu.
  */
-States::States(Commands & c) {
-	commands = &c;
+States::States(Commands & c, MenuDisplayer & m, InputHandler & i) : commands(&c), displayer(&m), handler(&i) {
 	initStates();
 	menuContainer[MAIN] = mainMenu;
 	menuContainer[DATA] = dataMenu;
@@ -22,8 +21,9 @@ States::States(Commands & c) {
 	actionContainer[CD2CD] = cd2cd;
 	actionContainer[IMAGEBURNING] = imageBurning;
 	actionContainer[DVDBURNING] = dvdBurning;
-	displayer = new MenuDisplayer(*(getState(MAIN)));
-	handler = new InputHandler(*(getState(MAIN)));
+	
+	displayer->setDisplayee(*(getState(MAIN)));
+	handler->setNewHandled(*(getState(MAIN)));
 }
 
 States::~States() {
@@ -33,8 +33,6 @@ States::~States() {
 	delete cdCopyMenu;
 	delete imageMenu;
 	delete configMenu;
-	delete displayer;
-	delete handler;
 	delete dataBurning;
 	delete audioBurning;
 	delete cd2iso;

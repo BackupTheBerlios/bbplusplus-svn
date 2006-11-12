@@ -12,13 +12,16 @@ int main()
 
 	// System commands used by BashBurn++
 	Commands executer;
+	
+	MenuDisplayer displayer;
+	InputHandler handler;
 
 	/*
 	 * Here we create not only the different states, but also the displayer used to print the menus
 	 * and the input handler used to get input from the user. All we have to do in the switch statement
 	 * below is to set the new handled state.
 	 */
-	States states(executer);
+	States states(executer, displayer, handler);
 	
 	// Let it rip!
 	int nextState;

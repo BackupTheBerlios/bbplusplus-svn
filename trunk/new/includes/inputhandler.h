@@ -5,6 +5,7 @@
 
 class InputHandler {
 	public:
+		InputHandler() : menu(NULL) { }
 		InputHandler(Menu & m);
 		~InputHandler();
 		int getInput();
