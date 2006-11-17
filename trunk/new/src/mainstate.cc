@@ -19,6 +19,10 @@ MainState::~MainState() {
 	delete mMenu;
 }
 
+Menu* MainState::getMenu() {
+	return mMenu;
+}
+
 int MainState::run() {
 	mCommands->clearScreen();
 	mDisplayer->show();

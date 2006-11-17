@@ -1,12 +1,12 @@
-#ifndef MAIN_STATE_H_
-#define MAIN_STATE_H_
+#ifndef DATA_STATE_H_
+#define DATA_STATE_H_
 
 #include  "states.h"
 
-class MainState : public States {
+class DataState : public States {
 	public:
-		MainState(Commands & cmd, MenuDisplayer & md, InputHandler & ih);
-		virtual ~MainState();
+		DataState(Commands & cmd, MenuDisplayer & md, InputHandler & ih);
+		virtual ~DataState();
 		void setState(int);
 		Menu* getMenu();
 		int run();

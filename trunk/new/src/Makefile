@@ -2,7 +2,7 @@ CC=g++
 CFLAGS=-c -Wall -pedantic -O0 -g3 -pg
 LDFLAGS=
 SOURCES=testfile.cc inputhandler.cc menudisplayer.cc mainstate.cc \
-	action.cc menu.cc menuitem.cc commands.cc
+	action.cc menu.cc menuitem.cc commands.cc datastate.cc
 OBJECTS=$(SOURCES:.cc=.o)
 EXECUTABLE=bashburn++
 
