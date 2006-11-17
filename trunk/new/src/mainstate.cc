@@ -11,8 +11,8 @@ MainState::MainState(Commands &cmd, MenuDisplayer &md, InputHandler & ih)
 	mMenu->addEntry(MenuItem(CONFIG, "Config"));
 	mMenu->addEntry(MenuItem(EXIT, "Exit"));
 
-	mDisplayer->setDisplayee(mMenu);
-	mHandler->setNewHandled(mMenu);
+	//mDisplayer->setDisplayee(mMenu);
+	//mHandler->setNewHandled(mMenu);
 }
 
 MainState::~MainState() {

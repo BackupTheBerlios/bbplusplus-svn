@@ -3,6 +3,7 @@
 #include "../includes/menudisplayer.h"
 #include "../includes/mainstate.h"
 #include "../includes/datastate.h"
+#include "../includes/audiostate.h"
 #include "../includes/inputhandler.h"
 #include "../includes/commands.h"
 #include <iostream>
@@ -26,6 +27,7 @@ int main()
 	 */
 	States* mainState = new MainState(*executer, displayer, handler);
 	States* dataState = new DataState(*executer, displayer, handler);
+	States* audioState = new AudioState(*executer, displayer, handler);
 	// Let it rip!
 	States* currentState = mainState;
 	/*
@@ -40,12 +42,17 @@ int main()
 			case EXIT:
 				delete mainState;
 				delete dataState;
+				delete audioState;
+				cout << "\nThank you for using BashBurn++\n";
 				return 0;
 			case MAIN:
 				currentState = mainState;
 				break;
 			case DATA:
 				currentState = dataState;
+				break;
+			case AUDIO:
+				currentState = audioState;
 				break;
 			default:
 				cout << "Not implemented\n";

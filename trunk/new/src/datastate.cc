@@ -9,8 +9,8 @@ DataState::DataState(Commands &cmd, MenuDisplayer &md, InputHandler & ih)
 	mMenu->addEntry(MenuItem(DVDBURNING, "Burn a Data DVD"));
 	mMenu->addEntry(MenuItem(MAIN, "Back to Main Menu"));
 
-	mDisplayer->setDisplayee(mMenu);
-	mHandler->setNewHandled(mMenu);
+	//mDisplayer->setDisplayee(mMenu);
+	//mHandler->setNewHandled(mMenu);
 }
 
 DataState::~DataState() {
