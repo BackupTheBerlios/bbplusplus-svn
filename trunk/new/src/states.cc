@@ -95,28 +95,6 @@ Action* States::getAction(int i) {
  * Initialization of the menus
  */
 /*
-void States::initMain() {
-	mainMenu = new Menu("Main Menu");
-	mainMenu->addEntry(MenuItem(DATA, "Data"));
-	mainMenu->addEntry(MenuItem(AUDIO, "Audio"));
-	mainMenu->addEntry(MenuItem(CDCOPY, "Copy CD"));
-	mainMenu->addEntry(MenuItem(IMAGES, "Images"));
-	mainMenu->addEntry(MenuItem(CONFIG, "Config"));
-	mainMenu->addEntry(MenuItem(EXIT, "Exit"));
-}
-
-void States::initData() {
-	dataMenu = new Menu("Data");
-	dataMenu->addEntry(MenuItem(DATABURNING, "Burn Data"));
-	dataMenu->addEntry(MenuItem(MAIN, "Back"));
-}
-
-void States::initAudio() {
-	audioMenu = new Menu("Audio");
-	audioMenu->addEntry(MenuItem(AUDIOBURNING, "Burn Audio"));
-	audioMenu->addEntry(MenuItem(MAIN, "Back"));
-}
-
 void States::initCdCopy() {
 	cdCopyMenu = new Menu("Copy CD");
 	cdCopyMenu->addEntry(MenuItem(CD2ISO, "Rip CD to ISO"));

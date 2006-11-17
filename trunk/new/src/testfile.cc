@@ -6,12 +6,13 @@
 #include "../includes/audiostate.h"
 #include "../includes/inputhandler.h"
 #include "../includes/commands.h"
+#include "../includes/filereader.h"
 #include <iostream>
 using std::cout;
 using std::auto_ptr;
 
 int main()
-{	
+{
 	/*
 	 *  System commands used by BashBurn++
 	 * We use a smart pointer to not have to worry about deleting it later on.
@@ -21,6 +22,8 @@ int main()
 	MenuDisplayer displayer;
 	InputHandler handler;
 
+	FileReader reader;
+	
 	/*
 	 * Here we create the different states of the program, and pass along
 	 * the commands used, the menu displayer and the input handler.
@@ -44,6 +47,7 @@ int main()
 				delete dataState;
 				delete audioState;
 				cout << "\nThank you for using BashBurn++\n";
+				reader.putText("Hello");
 				return 0;
 			case MAIN:
 				currentState = mainState;
