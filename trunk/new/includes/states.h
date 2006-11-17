@@ -36,7 +36,7 @@ class States {
 		States() {};
 		virtual ~States() {}
 		virtual int run() = 0;
-		virtual Menu* getMenu() {}
+		virtual Menu* getMenu() { return NULL; }
 };
 
 #endif /*STATES_H_*/
