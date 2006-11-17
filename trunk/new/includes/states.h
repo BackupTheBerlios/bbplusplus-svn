@@ -33,56 +33,14 @@ enum activities { DATABURNING = 100,
 
 class States {
 	public:
-		States(Commands &, MenuDisplayer &, InputHandler &);
-		~States();
-		Menu* getState(int);
-		void setState(int);
-		void initStates();
-		void initActions();
-		Action* getAction(int);
-		void show() const;
-		int getInput() const;
-	protected:
-	/*
-	 * Help methods used to initialize individual states/actions
-	 */
-		void initMain();
-		void initData();
-		void initAudio();
-		void initCdCopy();
-		void initImage();
-		void initConfig();
-		void initDataBurning();
-		void initAudioBurning();
-		void initCd2Iso();
-		void initCd2Cd();
-		void initImageBurning();
-		void initDvdBurning();
+		States() {};
+		virtual ~States() {}
+		virtual int run() = 0;
 	private:
 		/*
 		 * System commands used
 		 */
 		Commands* commands;
-		/*
-		 * The menu container and menus used
-		 */
-		std::map<int, Menu*> menuContainer;
-		Menu* mainMenu;
-		Menu* dataMenu;
-		Menu* audioMenu;
-		Menu* cdCopyMenu;
-		Menu* imageMenu;
-		Menu* configMenu;
-		/*
-		 * The action container and the actions that perform tasks.
-		 */
-		std::map<int, Action*> actionContainer;
-		Action* dataBurning;
-		Action* audioBurning;
-		Action* cd2iso;
-		Action* cd2cd;
-		Action* imageBurning;
-		Action* dvdBurning;
 		/*
 		 * Menu displayer and input handler used by the program.
 		 * They are both created by the main file and passed as arguments to

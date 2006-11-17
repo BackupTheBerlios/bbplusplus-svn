@@ -1,11 +1,9 @@
-#include "../includes/states.h"
-#include <iostream>
-
 /*
  * Constructor first initializes the different menus and actions, and then
  * adds them to their respective container. Also the menu displayer and 
  * input handler are set to handle the main menu.
  */
+/*
 States::States(Commands & c, MenuDisplayer & m, InputHandler & i) : commands(&c), displayer(&m), handler(&i) {
 	initStates();
 	menuContainer[MAIN] = mainMenu;
@@ -52,12 +50,14 @@ int States::getInput() const {
 Menu* States::getState(int i) {
 	return menuContainer[i];
 }
+*/
 
 /*
  * setState checks whether the entered state is a menu or an action.
  * Is it a menu, setState sets the menu displayer and input handler to the
  * correct menu, otherwise it executes the correct action.
  */
+/*
 void States::setState(int i) {
 	if(menuContainer.find(i) != menuContainer.end()) {
 		displayer->setDisplayee(getState(i));
@@ -89,10 +89,12 @@ void States::initActions() {
 Action* States::getAction(int i) {
 	return actionContainer[i];
 }
+*/
 
 /*
  * Initialization of the menus
  */
+/*
 void States::initMain() {
 	mainMenu = new Menu("Main Menu");
 	mainMenu->addEntry(MenuItem(DATA, "Data"));
@@ -132,10 +134,12 @@ void States::initConfig() {
 	configMenu = new Menu("Config");
 	configMenu->addEntry(MenuItem(MAIN, "Back"));
 }
+*/
 
 /*
  * Initialization of the actions
  */
+/*
 void States::initDataBurning() {
 	dataBurning = new Action();
 }
@@ -159,3 +163,4 @@ void States::initImageBurning() {
 void States::initDvdBurning() {
 	dvdBurning = new Action();
 }
+*/

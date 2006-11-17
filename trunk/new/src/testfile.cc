@@ -1,11 +1,12 @@
 #include "../includes/menuitem.h"
 #include "../includes/menu.h"
 #include "../includes/menudisplayer.h"
-#include "../includes/states.h"
+#include "../includes/mainstate.h"
 #include "../includes/inputhandler.h"
 #include "../includes/commands.h"
 #include <iostream>
-using namespace std;
+using std::cout;
+using std::auto_ptr;
 
 int main()
 {	
@@ -22,7 +23,7 @@ int main()
 	 * Here we create the different states of the program, and pass along
 	 * the commands used, the menu displayer and the input handler.
 	 */
-	States states(*executer, displayer, handler);
+	auto_ptr<States> currentState = (auto_ptr<States>) new MainState(*executer, displayer, handler);
 	
 	// Let it rip!
 	int nextState;
@@ -33,12 +34,11 @@ int main()
 	 */
 	while(true) {
 		executer->clearScreen();
-		states.show();
-		nextState = states.getInput();
+		nextState = currentState->run();
 		if(nextState == EXIT) {
 			return 0;
 		} else {
-			states.setState(nextState);
+			cout << "Some action was chosen";
 		}
 	}
 }
