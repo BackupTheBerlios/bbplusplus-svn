@@ -37,17 +37,6 @@ class States {
 		virtual ~States() {}
 		virtual int run() = 0;
 	private:
-		/*
-		 * System commands used
-		 */
-		Commands* commands;
-		/*
-		 * Menu displayer and input handler used by the program.
-		 * They are both created by the main file and passed as arguments to
-		 * the states constructor.
-		 */
-		MenuDisplayer* displayer;
-		InputHandler* handler;
 };
 
 #endif /*STATES_H_*/
