@@ -33,7 +33,6 @@ int main()
 	 * (Which could be a menu or an action) and continue.
 	 */
 	while(true) {
-		executer->clearScreen();
 		nextState = currentState->run();
 		if(nextState == EXIT) {
 			return 0;
