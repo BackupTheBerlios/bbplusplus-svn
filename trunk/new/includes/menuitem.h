@@ -12,7 +12,7 @@ class MenuItem{
 		 */
 		MenuItem();
 
-		MenuItem(int s, const char* inText );
+		MenuItem(const int s, const char* inText );
 		
 		MenuItem(const MenuItem & mi);
 
@@ -24,7 +24,7 @@ class MenuItem{
 		
 		const char* getEntryText() const { return entryText; }
 
-		MenuItem & operator=(MenuItem & m);
+		const MenuItem & operator=(const MenuItem & m);
 		
 	private:
 		int state;

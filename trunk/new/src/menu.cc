@@ -9,7 +9,7 @@ Menu::Menu(const char* t) : menuSize(0) {
 }
 
 // Copy constructor
-Menu::Menu(Menu* m) : menuSize(0) {
+Menu::Menu(const Menu* m) : menuSize(0) {
 	menuTitle = new char[strlen(m->menuTitle) + 1 ];
 	strcpy(menuTitle, m->menuTitle);
 	menuItems = m->getEntries();
@@ -17,13 +17,13 @@ Menu::Menu(Menu* m) : menuSize(0) {
 }	
 
 // Assignment operator
-Menu* Menu::operator=(Menu* m) {
+Menu* Menu::operator=(const Menu* m) {
 	if(this == m) {
 		return this;
 	}
 	delete[] menuTitle;
-	menuTitle = new char[strlen(m->menuTitle) + 1 ];
-	strcpy(menuTitle, m->menuTitle);
+	menuTitle = new char[strlen(m->getMenuTitle()) + 1 ];
+	strcpy(menuTitle, m->getMenuTitle());
 	menuItems = m->getEntries();
 	menuSize = m->getMenuSize();
 	return this;
@@ -39,14 +39,14 @@ void Menu::addEntry(const MenuItem & item) {
 	menuItems[menuSize] = temp;
 }
 
-EntryContainer & Menu::getEntries() {
+const EntryContainer & Menu::getEntries() const {
 	return menuItems;
 }
 
-int Menu::getMenuSize() const {
+const int Menu::getMenuSize() const {
 	return menuSize;	
 }
 
-const char* Menu::getMenuTitle() {
+const char* Menu::getMenuTitle() const {
 	return menuTitle;
 }

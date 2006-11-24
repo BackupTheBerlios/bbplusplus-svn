@@ -6,7 +6,7 @@ MenuItem::MenuItem() : state(MAIN) {
 	strcpy(entryText, "Empty");
 }
 
-MenuItem::MenuItem(int s, const char* t) : state(s) {
+MenuItem::MenuItem(const int s, const char* t) : state(s) {
 	entryText = new char[strlen(t) + 1];
 	strcpy(entryText, t);
 }
@@ -17,7 +17,7 @@ MenuItem::MenuItem(const MenuItem & mi) {
 	strcpy(entryText, mi.getEntryText());
 }
 
-MenuItem & MenuItem::operator=(MenuItem & m) {
+const MenuItem & MenuItem::operator=(const MenuItem & m) {
 	if(this == &m) {
 		return m;
 	}

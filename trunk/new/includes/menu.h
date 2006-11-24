@@ -10,13 +10,13 @@ typedef std::map<int, MenuItem> EntryContainer;
 class Menu {
 	public:
 		Menu(const char* inTitle = "No title");
-		Menu(Menu* m);
+		Menu(const Menu* m);
 		~Menu(); 
 		void addEntry(const MenuItem & item);
-		EntryContainer & getEntries();
-		int getMenuSize() const;
-		const char* getMenuTitle();
-		Menu* operator=(Menu* m);
+		const EntryContainer & getEntries() const;
+		const int getMenuSize() const;
+		const char* getMenuTitle() const;
+		Menu* operator=(const Menu* m);
 		int run();
 	private:
 		char* menuTitle;
