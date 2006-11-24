@@ -6,7 +6,7 @@
 #include "../includes/audiostate.h"
 #include "../includes/inputhandler.h"
 #include "../includes/commands.h"
-#include "../includes/filereader.h"
+#include "../includes/filehandler.h"
 #include <iostream>
 using std::cout;
 using std::auto_ptr;
@@ -22,7 +22,9 @@ int main()
 	MenuDisplayer displayer;
 	InputHandler handler;
 
-	FileReader reader;
+	FileHandler filemanager;
+	filemanager.putText("Yo mama");
+	
 	
 	/*
 	 * Here we create the different states of the program, and pass along
@@ -47,7 +49,6 @@ int main()
 				delete dataState;
 				delete audioState;
 				cout << "\nThank you for using BashBurn++\n";
-				reader.putText("Hello");
 				return 0;
 			case MAIN:
 				currentState = mainState;
