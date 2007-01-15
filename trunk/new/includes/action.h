@@ -5,7 +5,7 @@ class Action {
 	public:
 		Action();
 		~Action();
-		const char* run();
+		int perform();
 	protected:
 };
 

@@ -3,9 +3,10 @@
 #include <cstring>
 
 /*
- * The commands used should be a singleton
+ * The command set used should be a singleton
  */
 Commands* Commands::commandInstance = 0;
+
 Commands* Commands::Instance() {
 	if(commandInstance == 0) {
 		commandInstance = new Commands;
