@@ -1,9 +1,9 @@
 #include "../includes/filehandler.h"
 #include <iostream>
 
-FileHandler::FileHandler() {
-	inConfigFile.open("/home/conny/bb.rc");
-	outConfigFile.open("/home/conny/bb.rc");
+FileHandler::FileHandler(const char* inFile) {
+	inConfigFile.open(inFile);
+	outConfigFile.open(inFile);
 
 }
 

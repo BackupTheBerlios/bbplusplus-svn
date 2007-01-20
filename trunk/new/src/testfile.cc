@@ -22,7 +22,10 @@ int main()
 	MenuDisplayer displayer;
 	InputHandler handler;
 
-	FileHandler filemanager;
+	/*
+	 * Filehandler takes a filename as argument
+	 */
+	FileHandler filemanager("/home/conny/testfile.txt");
 	filemanager.putText("Yo mama");
 	
 	

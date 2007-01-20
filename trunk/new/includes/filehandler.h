@@ -5,7 +5,7 @@
 
 class FileHandler {
 	public:
-		FileHandler();
+		FileHandler(const char*);
 		~FileHandler();
 		void putText(const char*);
 	private:
