@@ -1,6 +1,5 @@
 #include "../includes/commands.h"
 #include <cstdlib>
-#include <cstring>
 
 /*
  * The command set used should be a singleton
@@ -14,14 +13,12 @@ Commands* Commands::Instance() {
 	return commandInstance;
 }
 
-Commands::Commands() : firstTime(true) {
+Commands::Commands() {
 	initCommands();
 }
 
 Commands::~Commands() {
-	delete[] cdBurnCommand;
-	delete[] dvdBurnCommand;
-	delete[] clearCommand;
+	//delete commandInstance;
 }
 
 void Commands::initCommands() {
@@ -30,28 +27,37 @@ void Commands::initCommands() {
 	setClearCommand("clear");
 }
 
-void Commands::setCdBurnCommand(const char* command) {
-	if(!firstTime) 
-		delete[] cdBurnCommand;
-	cdBurnCommand = new char[strlen(command) + 1];
-	strcpy(cdBurnCommand, command);
-	firstTime = false;
+void Commands::setCdBurnCommand(const std::string & command) {
+	/*
+	 * if(!firstTime)
+	 * 	delete[] cdBurnCommand;
+	 * cdBurnCommand = new char[strlen(command) + 1];
+	 * strcpy(cdBurnCommand, command);
+	 * firstTime = false;
+	 */
+	 cdBurnCommand = command;
 }
 
-void Commands::setDvdBurnCommand(const char* command) {
-	if(firstTime)
-		delete[] dvdBurnCommand;
-	dvdBurnCommand = new char[strlen(command) + 1];
-	strcpy(dvdBurnCommand, command);
-	firstTime = false;
+void Commands::setDvdBurnCommand(const std::string & command) {
+	/*
+	 * if(firstTime)
+	 * 	delete[] dvdBurnCommand;
+	 * dvdBurnCommand = new char[strlen(command) + 1];
+	 * strcpy(dvdBurnCommand, command);
+	 * firstTime = false;
+	 */
+	 dvdBurnCommand = command;
 }
 
-void Commands::setClearCommand(const char* command) {
-	if(firstTime)
-		delete[] clearCommand;
-	clearCommand = new char[strlen(command) + 1];
-	strcpy(clearCommand, command);
-	firstTime = false;
+void Commands::setClearCommand(const std::string & command) {
+	/*
+	 * if(firstTime)
+	 * 	delete[] clearCommand;
+	 * clearCommand = new char[strlen(command) + 1];
+	 * strcpy(clearCommand, command);
+	 * firstTime = false;
+	 */
+	 clearCommand = command;
 }
 
 void Commands::clearScreen() {
@@ -59,13 +65,13 @@ void Commands::clearScreen() {
 }
 
 const char* Commands::getCdBurnCommand() {
-	return cdBurnCommand;
+	return cdBurnCommand.c_str();
 }
 
 const char* Commands::getDvdBurnCommand() {
-	return dvdBurnCommand;
+	return dvdBurnCommand.c_str();
 }
 
 const char* Commands::getClearCommand() {
-	return clearCommand;
+	return clearCommand.c_str();
 }

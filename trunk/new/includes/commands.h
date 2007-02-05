@@ -2,14 +2,15 @@
 #define COMMANDS_H_
 
 #include <memory>
+#include <string>
 
 class Commands {
 	public:
 		~Commands();
 		static Commands* Instance();
-		void setCdBurnCommand(const char* command);
-		void setDvdBurnCommand(const char* command);
-		void setClearCommand(const char* command);
+		void setCdBurnCommand(const std::string & command);
+		void setDvdBurnCommand(const std::string & command);
+		void setClearCommand(const std::string & command);
 		void clearScreen();
 	/*
 	 * Helper methods not supposed to be used outside the class
@@ -21,10 +22,10 @@ class Commands {
 		const char* getDvdBurnCommand();
 		const char* getClearCommand();
 	private:
-		bool firstTime;
-		char* cdBurnCommand;
-		char* dvdBurnCommand;
-		char* clearCommand;
+		//bool firstTime;
+		std::string cdBurnCommand;
+		std::string dvdBurnCommand;
+		std::string clearCommand;
 		static Commands* commandInstance;
 };
 

@@ -8,6 +8,7 @@ class FileHandler {
 		FileHandler(const char*);
 		~FileHandler();
 		void putText(const char*);
+		void getConfig(const char*);
 	private:
 		std::ifstream inConfigFile;
 		std::ofstream outConfigFile;

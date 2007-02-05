@@ -15,3 +15,6 @@ FileHandler::~FileHandler() {
 void FileHandler::putText(const char* inputText) {
 	outConfigFile << inputText;
 }
+
+void FileHandler::getConfig(const char*) {
+}
